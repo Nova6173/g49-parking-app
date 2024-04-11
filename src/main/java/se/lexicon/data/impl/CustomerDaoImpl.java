@@ -14,7 +14,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public Customer create(Customer customer) {
-        //todo: Add necessary validations
+        if(customer == null) throw new NullPointerException("Customer cannot be null");
         int id = CustomerSequencer.nextId();
         customer.setId(id);
         storage.add(customer);

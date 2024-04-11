@@ -7,17 +7,15 @@ import se.lexicon.model.Vehicle;
 
 import java.util.UUID;
 
-/**
- * Hello world!
- */
+
 public class App {
     public static void main(String[] args) {
         Customer customer1 = new Customer(1,"Test", "123456");
         Vehicle vehicle1 = new Vehicle("ABC123");
 
 
-        ParkingSpot parkingSpot1 = new ParkingSpot(1, 47001);
-        ParkingSpot parkingSpot2 = new ParkingSpot(2, 47001);
+        ParkingSpot parkingSpot1 = new ParkingSpot(1, 7777);
+        ParkingSpot parkingSpot2 = new ParkingSpot(2, 7777);
 
 
         System.out.println(parkingSpot1);

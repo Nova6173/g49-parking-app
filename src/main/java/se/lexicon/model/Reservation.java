@@ -10,65 +10,65 @@ public class Reservation {
     private LocalDateTime endTime;
     private Vehicle associatedVehicle;
 
-    public Reservation(Customer customer, ParkingSpot parkingSpot, int hours, Vehicle associatedVehicle) {
+    public Reservation (Customer customer, ParkingSpot parkingSpot, int hours, Vehicle associatedVehicle) {
         this.customer = customer;
         this.parkingSpot = parkingSpot;
-        this.startTime = LocalDateTime.now();
-        setEndTime(hours);
+        this.startTime = LocalDateTime.now ();
+        setEndTime (hours);
         this.associatedVehicle = associatedVehicle;
     }
 
-    public String getId() {
+    public String getId () {
         return id;
     }
 
-    public Customer getCustomer() {
+    public Customer getCustomer () {
         return customer;
     }
 
-    public ParkingSpot getParkingSpot() {
+    public ParkingSpot getParkingSpot () {
         return parkingSpot;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalDateTime getStartTime () {
         return startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalDateTime getEndTime () {
         return endTime;
     }
 
-    public Vehicle getAssociatedVehicle() {
+    public Vehicle getAssociatedVehicle () {
         return associatedVehicle;
     }
 
-    public void setId(String id) {
+    public void setId (String id) {
         this.id = id;
     }
 
-    public void setAssociatedVehicle(Vehicle associatedVehicle) {
+    public void setAssociatedVehicle (Vehicle associatedVehicle) {
         this.associatedVehicle = associatedVehicle;
     }
 
-    public void setEndTime(int hours) {
-        if (hours <= 0){
-            throw new IllegalArgumentException("Hours should be a positive number");
+    public void setEndTime (int hours) {
+        if (hours <= 0) {
+            throw new IllegalArgumentException ("Hours should be a positive number");
         }
-        this.endTime = startTime.plusHours(hours);
+        this.endTime = startTime.plusHours (hours);
     }
 
-    public void reserve() {
-        if (customer.getReservation() != null)
-            throw new IllegalArgumentException("Customer has already a reserved parking spot.");
-        if (parkingSpot == null) throw new IllegalArgumentException("Parking Spot should not be null.");
-        if (parkingSpot.isOccupied()) throw new IllegalArgumentException("Parking spot is already occupied!");
-        parkingSpot.occupy();
-        customer.setReservation(this);
+    public void reserve () {
+        if (customer.getReservation () != null)
+            throw new IllegalArgumentException ("Customer has already a reserved parking spot.");
+        if (parkingSpot == null) throw new IllegalArgumentException ("Parking Spot should not be null.");
+        if (parkingSpot.isOccupied ()) throw new IllegalArgumentException ("Parking spot is already occupied!");
+        parkingSpot.occupy ();
+        customer.setReservation (this);
     }
 
-    public void cancel() {
-        parkingSpot.vacate();
-        customer.setReservation(null);
+    public void cancel () {
+        parkingSpot.vacate ();
+        customer.setReservation (null);
         //setCustomer(null);
     }
 
@@ -76,25 +76,24 @@ public class Reservation {
         this.customer = customer;
     }*/
 
-    public String getDescription() {
+    public String getDescription () {
 
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder ();
 
-        builder.append("Reservation Id: ").append(id);
+        builder.append ("Reservation Id: ").append (id);
         if (customer == null) {
-            builder.append(", Customer: ").append(" - ");
+            builder.append (", Customer: ").append (" - ");
         } else {
-            builder.append(", Customer: ").append(customer.getDescription());
+            builder.append (", Customer: ").append (customer.getDescription ());
         }
 
-        builder.append(", Parking Spot: ").append(parkingSpot.getSpotNumber())
-                .append(", Start Time: ").append(startTime)
-                .append(", End Time: ").append(endTime)
-                .append(", Associated Vehicle: ").append(associatedVehicle.getLicensePlate());
+        builder.append (", Parking Spot: ").append (parkingSpot.getSpotNumber ())
+                .append (", Start Time: ").append (startTime)
+                .append (", End Time: ").append (endTime)
+                .append (", Associated Vehicle: ").append (associatedVehicle.getLicensePlate ());
 
-        return builder.toString();
+        return builder.toString ();
 
     }
-
 
 }
